@@ -13,6 +13,11 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/search/:artist/:song',
+      name: 'Search',
+      component: Home,
+    },
+    {
       path: '/hello',
       name: 'Hello',
       component: Hello,
