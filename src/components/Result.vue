@@ -1,10 +1,12 @@
 <template>
-  <div class="card">
+  <div class="ui card">
     <div class="image">
        <img :src="thumbnail"> 
     </div>
     <div class="content">
-      <div class="header">{{title}}</div>
+      <div class="header">
+        <router-link :to="{ name: 'sing', params: { videoId: videoId }}">{{title}}</router-link>
+      </div>
       <div class="meta">
         <a>{{channel}}</a>
       </div>
@@ -22,6 +24,7 @@
       </span>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -30,6 +33,7 @@ export default {
   data() {
     return {
       title: this.result.snippet.title,
+      videoId: this.result.id.videoId,
       channel: this.result.snippet.channelTitle,
       description: this.result.snippet.description,
       published: new Date(this.result.snippet.publishedAt),
@@ -49,3 +53,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+</style>
+

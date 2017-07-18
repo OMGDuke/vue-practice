@@ -1,5 +1,5 @@
 <template>
-  <div class="ui link cards">
+  <div class="ui cards">
     <result v-for="result in results" :key="'result'" v-bind:result="result"></result>
   </div>
 </template>
