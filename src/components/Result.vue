@@ -1,11 +1,12 @@
 <template>
   <div class="ui card">
-    <div class="image">
-       <img :src="thumbnail"> 
+    <div class="image video-image">
+       <img :src="thumbnail" v-on:click="goToSong()"> 
+
     </div>
     <div class="content">
       <div class="header">
-        <router-link :to="{ name: 'sing', params: { videoId: videoId }}">{{title}}</router-link>
+        <a v-on:click="goToSong()">{{title}}</a>
       </div>
       <div class="meta">
         <a>{{channel}}</a>
@@ -50,10 +51,17 @@ export default {
       if (day.length < 2) day = `0${day}`;
       return `${day}/${month}/${year}`;
     },
+    goToSong() {
+      console.log('test');
+      this.$router.push({ name: 'sing', params: { videoId: this.videoId, title: this.title } });
+    },
   },
 };
 </script>
 
 <style scoped>
+.video-image {
+  cursor: pointer;
+}
 </style>
 

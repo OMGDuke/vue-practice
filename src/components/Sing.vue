@@ -1,19 +1,29 @@
 <template>
-  <div class="videoWrapper">
-    <iframe id="ytplayer" type="text/html" allowfullscreen="allowfullscreen"  width="640" height="360"
-            :src="`https://www.youtube.com/embed/${videoId}?autoplay=1`"
-            frameborder="0"></iframe> 
-  </div>
+  <div>
+      <div class="videoWrapper">
+      <iframe id="ytplayer" type="text/html" allowfullscreen="allowfullscreen"  width="640" height="360"
+              :src="`https://www.youtube.com/embed/${videoId}?autoplay=1`"
+              frameborder="0"></iframe>
+    </div>
+    <h1>{{title}}</h1>
+    <lyrics></lyrics>
+</div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      videoId: this.$route.params.videoId,
-    };
-  },
-};
+  import Lyrics from './Lyrics';
+
+  export default {
+    components: {
+      Lyrics,
+    },
+    data() {
+      return {
+        videoId: this.$route.params.videoId,
+        title: this.$route.params.title,
+      };
+    },
+  };
 </script>
 
 <style scoped>
@@ -29,5 +39,8 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  lyrics {
+    margin-top: 50px;
   }
 </style>
